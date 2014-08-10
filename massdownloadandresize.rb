@@ -8,7 +8,7 @@ url2 = "Heinz_Wyler/Fotosammlung%20Heinz/Auftragsarbeiten/Bauprojekt%20neues%20G
 url3 = "%20PetitPrince.jpg/?dl=1&key=sU7ylQDOEwyD"
 name = "PetitPrince.jpg"
 
-require 'net/http'
+require 'open-uri'
 
 # préparation des urls
 urls = Hash.new
