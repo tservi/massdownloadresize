@@ -13,7 +13,7 @@ require 'rubygems'
 require 'ImageResize' # gem install ImageResize
 
 
-# préparation des urls
+# prÃ©paration des urls
 urls = Hash.new
 (min..max).to_a.each {
   |e|
@@ -23,12 +23,15 @@ urls = Hash.new
 #rapatriement et taille des images
 urls.each {|name, url |
   #puts name, url
-  image = open('images/' + name + '.original.jpg' , 'wb')
-  image << open(url).read
-  Image.resize( 'images/' + name + '.original.jpg'  , 'images/' + name , 640, 640)
-}
+  new_image_name = 'images/' + name
+  if not File.exist? new_image_name
+    image = open(new_image_name + '.original.jpg' , 'wb')
+    image << open(url).read
+    Image.resize( new_image_name + '.original.jpg'  , new_image_name , 640, 640)
+  end
+  }
 
-# nettoyage du répertoire
+# nettoyage du rÃ©pertoire
 FileUtils.rm Dir.glob('images/*original*')
 
-# au fait, inutile d'essayer sur MS windows open-uri fonctionne très mal ... ;-)
+# au fait, inutile d'essayer sur MS windows open-uri fonctionne trÃ¨s mal ... ;-)
